@@ -17,7 +17,7 @@ function Home() {
                 setPosts(posts.documents);
             }
         })
-    },[])
+    },[Status])
 
     console.log(Posts);
     if (Posts.length === 0) {

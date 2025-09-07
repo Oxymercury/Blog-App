@@ -24,12 +24,12 @@ export default function PostForm({ post }) {
 
   const submit = async (data) => {
     if (post) {
-        const file = data.image[0] ? await ObjService.UploadFile(data.image[0]) : null;
+        const file = data.image[0] ? await ObjService.UploadFileploadFile(data.image[0]) : null;
 
         if (file) {
             ObjService.DeleteFile(post.featuredImage);
         }
-
+        console.log("User id ", userData.$id);
         const dbPost = await ObjService.updatePost(post.$id, {
             ...data,
             featuredImage: file ? file.$id : undefined,
@@ -44,7 +44,7 @@ export default function PostForm({ post }) {
         if (file) {
             const fileId = file.$id;
             data.featuredImage = fileId;
-            console.log("Submitted file id",fileId);
+            console.log("User id ", userData.$id);
             const dbPost = await ObjService.createPost({ ...data, userId: userData.$id });
 
             if (dbPost) {
