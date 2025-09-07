@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@keyframes skeleton-shimmer {
+    0% { transform: translateX(-110%); }
+    100% { transform: translateX(110%); }
+  }
+  .animate-skeleton-shimmer {
+    animation: skeleton-shimmer 1.4s linear infinite;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeInUp .35s ease both;
+  }
+  
