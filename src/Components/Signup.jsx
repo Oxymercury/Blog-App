@@ -16,8 +16,10 @@ function Signup() {
     const dispatch = useDispatch();
     const [error,seterror] = useState("");
     const {register,handleSubmit} = useForm();
+    const [isSignUp,setisSignUp] = useState(false);
 
     const Signup = async (data) => {
+        setisSignUp(!isSignUp);
         seterror("");
         try {
             const response = await authService.createAccount(data);
@@ -29,6 +31,7 @@ function Signup() {
                 }
             }
         } catch (error) {
+            setisSignUp(false);
             seterror(error.message);
             
         }
@@ -81,7 +84,7 @@ function Signup() {
                         {...register("password", {
                             required: true,})}
                         />
-                        <Button type="submit" className="w-full">
+                        <Button loading={isSignUp} type="submit" className="w-full">
                             Create Account
                         </Button>
                     </div>

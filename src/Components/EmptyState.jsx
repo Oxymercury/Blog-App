@@ -80,7 +80,7 @@ export default function EmptyState({
         {showTeaser && (
           <div className=" mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
-              <div
+              <Link to='/login'
                 key={i}
                 className="cursor-pointer shadow-2xl p-4 bg-white/3 rounded-xl border border-white/6 overflow-hidden"
               >
@@ -97,7 +97,7 @@ export default function EmptyState({
                   <div className="h-4 bg-gray-600 rounded w-3/4 mb-2" />
                   <div className="h-3 bg-gray-600 rounded w-1/2" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

@@ -15,9 +15,11 @@ function LoginComponent() {
     const dispatch = useDispatch();
     const {register,handleSubmit} = useForm();
     const [error,seterror] = useState("");
+    const [isLogin,setisLogin] = useState(false);
 
     // making login as asynce function kyuki information jayegi fir aayegi thas why 
     const login = async(data) => {
+        setisLogin(!isLogin);
         seterror("");
         try {
             const session = await authService.login(data);
@@ -31,6 +33,7 @@ function LoginComponent() {
             }
         } catch (error) {
             seterror(error.message);
+            setisLogin(false);
             
         }
     }
@@ -78,6 +81,7 @@ function LoginComponent() {
                 })}
                 />
                 <Button
+                loading={isLogin}
                 type="submit"
                 className="w-full "
                 >Sign in</Button>

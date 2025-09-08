@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../Button'
 import Input from '../Input'
 import { useForm } from 'react-hook-form'
@@ -21,8 +21,10 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const [isSubmitting,setisSubmitting] = useState(false);
 
   const submit = async (data) => {
+    setisSubmitting(!isSubmitting);
     if (post) {
         const file = data.image[0] ? await ObjService.UploadFileploadFile(data.image[0]) : null;
 
@@ -164,6 +166,7 @@ return (
 
         <div className="pt-2">
           <Button
+            loading={isSubmitting}
             type="submit"
             bgColor={post ? "bg-green-600" : undefined}
             className={`w-full py-3 text-white font-semibold rounded-lg transition ${

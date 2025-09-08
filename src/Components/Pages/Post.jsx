@@ -11,11 +11,13 @@ export default function Post() {
   const [post, setPost] = useState(null);
   const { slug } = useParams();
   const navigate = useNavigate();
+  const [isDelete,setisDelete] = useState(false);
 
   const userData = useSelector((state) => state.auth.userData);
 
   // keep your original auth check (no logic changes)
   const isAuthor = post && userData ? post.userId === userData.$id : false;
+  
 
   useEffect(() => {
     if (slug) {
@@ -30,6 +32,7 @@ export default function Post() {
   }, [slug, navigate]);
 
   const deletePost = () => {
+    setisDelete(!isDelete);
     ObjService.DeletePost(post.$id).then((Status) => {
       if (Status) {
         ObjService.DeleteFile(post.featuredImage);
@@ -69,6 +72,7 @@ export default function Post() {
                   </Link>
                   <Button
                     onClick={deletePost}
+                    loading={isDelete}
                     className="px-4 py-2 !bg-red-500 !text-white hover:!bg-red-600"
                     bgColor=""
                   >
