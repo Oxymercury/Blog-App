@@ -26,7 +26,7 @@ export default function PostForm({ post }) {
   const submit = async (data) => {
     setisSubmitting(!isSubmitting);
     if (post) {
-        const file = data.image[0] ? await ObjService.UploadFileploadFile(data.image[0]) : null;
+        const file = data.image[0] ? await ObjService.UploadFile(data.image[0]) : null;
 
         if (file) {
             ObjService.DeleteFile(post.featuredImage);

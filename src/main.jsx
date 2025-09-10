@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -13,6 +13,7 @@ import AddPost from './Components/Pages/AddPost.jsx'
 import EditPost from './Components/Pages/EditPost.jsx'
 import Login from './Components/Pages/Login.jsx'
 import Post from './Components/Pages/Post.jsx'
+
 
 const router = createBrowserRouter([
   {
