@@ -7,6 +7,7 @@ import Footer from './Components/Footer.jsx';
 import Header from './Components/Header.jsx';
 import config from './Confi/confi.js';
 import { Outlet } from 'react-router-dom';
+import Loader from './Components/LoaderEditPost.jsx';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
         <Footer />
       </div>
     </div>
-  ) : null
+  ) : <Loader height = {700} />
 }
 
 export default App
