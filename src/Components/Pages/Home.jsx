@@ -10,13 +10,18 @@ import Loading from '../Loading';
 function Home() {
     const [Posts,setPosts] = useState([]);
     const Status = useSelector((store) => store.auth.Status);
-
+    console.log(Status);
     useEffect(() => {
+        if(Status){
         ObjService.ListPost().then((posts) => {
             if(posts){
                 setPosts(posts.documents);
             }
         })
+        }
+        else{
+            setPosts([]);
+        }
     },[Status])
 
     console.log(Posts);
